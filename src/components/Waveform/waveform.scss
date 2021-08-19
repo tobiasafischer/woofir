@@ -3,7 +3,25 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100px;
-  width: 50vw;
+  height: 15vh;
+  width: 100%;
   background: transparent;
+  overflow: hidden;
+}
+p {
+  font-size: 12px;
+  color: #b1b3be;
+}
+.waveform-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .waveform {
+    width: 100%;
+
+    position: absolute;
+    overflow: hidden;
+  }
 }

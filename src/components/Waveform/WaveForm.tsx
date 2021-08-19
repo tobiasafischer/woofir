@@ -1,59 +1,91 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import WaveSurfer from 'wavesurfer.js';
-import styled from 'styled-components';
 
 import PlayButton from '../misc/PlayButton';
 import './waveform.scss';
 
-const WaveformContianer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 100px;
-  width: 50vw;
-  background: transparent;
-`;
+const useInterval = (callback, delay) => {
+  const savedCallback = useRef();
 
-const Waveform = () => {
-  const [playing, setPlaying] = useState(false);
-  const [waveform, setWaveform] = useState();
-
+  // Remember the latest callback.
   useEffect(() => {
-    setWaveform(
-      WaveSurfer.create({
-        barWidth: 3,
-        cursorWidth: 1,
-        container: '#waveform',
-        backend: 'WebAudio',
-        height: 80,
-        progressColor: '#2D5BFF',
-        responsive: true,
-        waveColor: '#EFEFEF',
-        cursorColor: 'transparent',
-      }),
-    );
-  }, []);
+    savedCallback.current = callback;
+  }, [callback]);
 
+  // Set up the interval.
   useEffect(() => {
-    if (waveform) {
-      const track = document.querySelector('#track');
-      waveform.load(track);
+    function tick() {
+      savedCallback.current();
     }
-  }, [waveform]);
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
+};
 
-  const handlePlay = () => {
-    setPlaying((playing) => !playing);
-    waveform.playPause();
+const formWaveSurferOptions = (ref) => ({
+  container: ref,
+  waveColor: '#eee',
+  progressColor: '#Eb736c',
+  cursorColor: '#b1b3be',
+  barWidth: 4,
+  barRadius: 3,
+  responsive: true,
+  height: 100,
+  // If true, normalize by the maximum peak instead of 1.0.
+  normalize: true,
+  // Use the PeakCache to improve rendering speed of large waveforms.
+  partialRender: true,
+});
+const Waveform = () => {
+  const waveformRef = useRef(null);
+  const wavesurfer = useRef(null);
+  const [playing, setPlay] = useState(false);
+  const [volume, setVolume] = useState(0.5);
+  const [sec, setSec] = useState(0);
+  const [duration, setDuration] = useState(null);
+  const [url, setUrl] = useState(
+    'https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3',
+  );
+  useInterval(() => {
+    if (playing) setSec((sec) => sec + 1);
+  }, 1000);
+  useEffect(() => {
+    setPlay(false);
+    const options = formWaveSurferOptions(waveformRef.current);
+    wavesurfer.current = WaveSurfer.create(options);
+    wavesurfer.current.load(url);
+    wavesurfer.current.on('ready', function () {
+      if (wavesurfer.current) {
+        wavesurfer.current.setVolume(volume);
+        setVolume(volume);
+        setDuration(wavesurfer.current.getDuration());
+      }
+    });
+    return () => wavesurfer.current.destroy();
+  }, [url]);
+
+  const handlePlayPause = () => {
+    setPlay(!playing);
+    wavesurfer.current.playPause();
   };
-  const url = 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3';
+
+  const secTommss2 = (sec) => {
+    return new Date(sec * 1000).toUTCString().split(' ')[4].substr(3);
+  };
 
   return (
-    <WaveformContianer>
-      <PlayButton handlePlay={handlePlay} playing={playing} />
-      <div id="waveform" />
-      <audio id="track" src={url} />
-    </WaveformContianer>
+    <div style={{ width: '100%' }}>
+      <div className="audio-container">
+        <PlayButton handlePlay={handlePlayPause} playing={!playing} />
+        <div className="waveform-wrapper">
+          <div ref={waveformRef} className="waveform" />
+        </div>
+        <audio id="track" src={url} />
+      </div>
+      <p style={{ width: '20vh' }}>{`${secTommss2(sec)} / ${secTommss2(Math.round(duration))}`}</p>
+    </div>
   );
 };
 

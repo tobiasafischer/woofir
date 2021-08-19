@@ -7,22 +7,23 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
+
+  overflow: hidden;
 }
 
 .btn {
   position: relative;
-  width: 40px;
-  height: 40px;
-  border: white 3px solid;
+  width: 45px;
+  height: 45px;
+  border: linear-gradient(45deg, #6405ff, #eb736c) 3px solid;
   border-radius: 3px;
   cursor: pointer;
   transition: border 0.1s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 
   &:hover {
-    border: #333 3px solid;
-    .bar {
-      background-color: #333;
-    }
+    transform: scale(1.2);
+    transition: transform 0.4s ease-in-out;
   }
 
   .bar {
@@ -33,7 +34,7 @@
     width: 3px;
     height: 20px;
     border-radius: 3px;
-    background-color: white;
+    background: linear-gradient(45deg, #6405ff, #eb736c);
     transform-origin: center;
     transition: transform 0.4s ease-in-out, background 0.1s ease-in-out;
   }

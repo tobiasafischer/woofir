@@ -4,4 +4,19 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  flex-direction: column;
+
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo,
+    svg {
+      font-size: 70px;
+      background: linear-gradient(360deg, #6405ff, #eb736c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
 }
