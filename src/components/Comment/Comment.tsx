@@ -3,9 +3,10 @@ import './comment.scss';
 
 const Comment = ({ offset }) => {
   const [style, setStyle] = useState({ display: 'none' });
+
   return (
     <div
-      style={{ transform: `translateX(${offset}px)` }}
+      style={{ transform: `translateX(${0.68 * offset}vw)` }}
       className="comment-indiv-contain"
       onMouseEnter={(e) => {
         setStyle({ display: '' });

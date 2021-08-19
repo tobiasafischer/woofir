@@ -6,9 +6,9 @@ const CommentContainer = () => {
   console.log(1);
   return (
     <div className="comment-container">
-      <Comment offset={3} />
-      <Comment offset={1} />
-      <Comment offset={2} />
+      <Comment offset={50} />
+      <Comment offset={100} />
+      <Comment offset={0} />
     </div>
   );
 };
