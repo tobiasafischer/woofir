@@ -3,28 +3,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 
 import PlayButton from '../misc/PlayButton';
+import { useInterval } from './useInterval';
 import './waveform.scss';
 
-const useInterval = (callback, delay) => {
-  const savedCallback = useRef();
-
-  // Remember the latest callback.
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  // Set up the interval.
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-    if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-};
-
+//styling of waveform
 const formWaveSurferOptions = (ref) => ({
   container: ref,
   waveColor: '#eee',
@@ -39,6 +21,7 @@ const formWaveSurferOptions = (ref) => ({
   // Use the PeakCache to improve rendering speed of large waveforms.
   partialRender: true,
 });
+
 const Waveform = () => {
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
@@ -49,9 +32,20 @@ const Waveform = () => {
   const [url, setUrl] = useState(
     'https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3',
   );
+
+  // second timer
   useInterval(() => {
     if (playing) setSec(wavesurfer.current.getCurrentTime());
   }, 1000);
+
+  const handleClick = () => {
+    // onclick of waveform changes the time to the current time
+    setTimeout(() => {
+      setSec(wavesurfer.current.getCurrentTime());
+    }, 100);
+  };
+
+  // initialization
   useEffect(() => {
     setPlay(false);
     const options = formWaveSurferOptions(waveformRef.current);
@@ -70,12 +64,6 @@ const Waveform = () => {
   const handlePlayPause = () => {
     setPlay(!playing);
     wavesurfer.current.playPause();
-  };
-
-  const handleClick = () => {
-    setTimeout(() => {
-      setSec(wavesurfer.current.getCurrentTime());
-    }, 100);
   };
 
   const secTommss2 = (sec) => {
