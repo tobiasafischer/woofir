@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.scss';
+import WaveForm from '../WaveForm/WaveForm';
 
 const Home = () => {
   console.log(1);
@@ -231,6 +232,7 @@ const Home = () => {
           </g>
         </g>
       </svg>
+      <WaveForm />
     </div>
   );
 };
