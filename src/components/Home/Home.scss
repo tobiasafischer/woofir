@@ -1,0 +1,10 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  svg {
+    width: 40vw;
+    height: auto;
+  }
+}
