@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.scss';
-import WaveForm from '../WaveForm/WaveForm';
+import WaveForm from '../Waveform/WaveForm';
 
 const Home = () => {
   console.log(1);
