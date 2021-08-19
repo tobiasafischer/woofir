@@ -1,3 +1,4 @@
+import { SettingsCellSharp } from '@material-ui/icons';
 import React, { useState, useEffect, useRef } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 
@@ -49,7 +50,7 @@ const Waveform = () => {
     'https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3',
   );
   useInterval(() => {
-    if (playing) setSec((sec) => sec + 1);
+    if (playing) setSec(wavesurfer.current.getCurrentTime());
   }, 1000);
   useEffect(() => {
     setPlay(false);
@@ -71,6 +72,12 @@ const Waveform = () => {
     wavesurfer.current.playPause();
   };
 
+  const handleClick = () => {
+    setTimeout(() => {
+      setSec(wavesurfer.current.getCurrentTime());
+    }, 100);
+  };
+
   const secTommss2 = (sec) => {
     return new Date(sec * 1000).toUTCString().split(' ')[4].substr(3);
   };
@@ -80,7 +87,7 @@ const Waveform = () => {
       <div className="audio-container">
         <PlayButton handlePlay={handlePlayPause} playing={!playing} />
         <div className="waveform-wrapper">
-          <div ref={waveformRef} className="waveform" />
+          <div ref={waveformRef} className="waveform" onClick={handleClick} />
         </div>
         <audio id="track" src={url} />
       </div>
