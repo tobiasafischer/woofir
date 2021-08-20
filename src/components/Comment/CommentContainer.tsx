@@ -2,7 +2,7 @@ import React from 'react';
 import './comment.scss';
 import Comment from './Comment';
 
-const CommentContainer = () => {
+const CommentContainer = ({ duration }) => {
   console.log(1);
   return (
     <div className="comment-container">

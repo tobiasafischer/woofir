@@ -1,4 +1,3 @@
-import { SettingsCellSharp } from '@material-ui/icons';
 import React, { useState, useEffect, useRef } from 'react';
 import WaveSurfer from 'wavesurfer.js';
 import CommentContainer from '../Comment/CommentContainer';
@@ -79,8 +78,11 @@ const Waveform = () => {
         </div>
         <audio id="track" src={url} />
       </div>
-      <p style={{ width: '20vh' }}>{`${secTommss2(sec)} / ${secTommss2(Math.round(duration))}`}</p>
-      <CommentContainer />
+      <p style={{ marginTop: '-1.8vh', width: '20vh' }}>{`${secTommss2(sec)} / ${secTommss2(
+        Math.round(duration),
+      )}`}</p>
+
+      <CommentContainer duration={duration} />
     </div>
   );
 };
