@@ -3,13 +3,17 @@ import './comment.scss';
 
 const Comment = ({ offset }) => {
   const [style, setStyle] = useState({ display: 'none' });
+  const handleEnter = () => {
+    if (offset < 75) setStyle({ display: '' });
+    else setStyle({ display: '', marginRight: '5vw' });
+  };
 
   return (
     <div
       style={{ transform: `translateX(${0.68 * offset}vw)` }}
       className="comment-indiv-contain"
       onMouseEnter={(e) => {
-        setStyle({ display: '' });
+        handleEnter();
       }}
       onMouseLeave={(e) => {
         setStyle({ display: 'none' });
@@ -23,8 +27,9 @@ const Comment = ({ offset }) => {
         />
       </div>
 
-      <div className="comment">
-        <div style={style}>ss</div>
+      <div style={style} className="comment-txt-container">
+        <p id="username">@tobias</p>
+        <p id="content">yesgasergseadrgsaergasegasegawsegsaegsaesegsego</p>
       </div>
     </div>
   );

@@ -9,6 +9,7 @@
 }
 
 .comment-indiv-contain {
+  width: 40px;
   height: 45px;
   position: absolute;
   display: flex;
@@ -26,10 +27,24 @@
       height: auto;
     }
   }
-  .comment {
+  .comment-txt-container {
     position: absolute;
-    width: 20px;
-    margin-top: 15vh;
+    margin-top: 10vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    #content {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    #username {
+      margin-right: 1vw;
+      color: #eb736c;
+    }
   }
   &:hover {
     .comment-img {
