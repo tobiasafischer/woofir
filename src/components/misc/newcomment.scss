@@ -1,0 +1,61 @@
+.app-form-group {
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.app-form-group.buttons {
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.app-form-control {
+  width: 100%;
+  padding: 7px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #888;
+  color: #eb736c;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: 'Overpass', sans-serif;
+  text-transform: lowercase;
+}
+
+.app-form-control::placeholder {
+  color: #666;
+}
+
+.app-form-control:focus {
+  border-bottom-color: rgb(179, 179, 179);
+}
+
+.app-form-button {
+  background: none;
+  border: none;
+  color: #eb736c;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  font-family: 'Overpass', sans-serif;
+  text-transform: lowercase;
+}
+
+.app-form-button:hover {
+  color: #eb736c;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill::first-line {
+  font-family: 'Overpass', sans-serif;
+  color: #eb736c;
+  font-size: 14px;
+  text-transform: lowercase;
+  transition: background-color 5000s ease-in-out 0s;
+}

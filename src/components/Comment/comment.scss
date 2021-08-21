@@ -1,33 +1,39 @@
 .comment-container {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   height: 5vh;
-  width: 69.969vw;
+  width: 70.969vw;
   margin-left: 3.9vw;
-  border: 1px solid red;
+  border-bottom: 1px solid #888;
 }
 
 .comment-indiv-contain {
+  position: absolute;
   width: 40px;
   height: 45px;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: green;
+  background-color: transparent;
+  max-width: 40px;
+  min-width: 30px;
+
   .comment-img {
     overflow: hidden;
     max-width: 40px;
     height: 100px;
+    margin-right: 5vw;
     transition: all 0.5s ease-in-out;
     img {
       max-width: 40px;
+      min-width: 30px;
       height: auto;
     }
   }
   .comment-txt-container {
+    margin-right: 5vw;
     position: absolute;
     margin-top: 10vh;
     width: 30vw;
