@@ -85,7 +85,7 @@ const Waveform = () => {
       <div className="comment-wrapper-container">
         <CommentContainer duration={duration} />
       </div>
-      <NewComment />
+      <NewComment timestamp={sec} />
     </div>
   );
 };

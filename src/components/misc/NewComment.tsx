@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import './newcomment.scss';
 
-const NewComment = () => {
+const NewComment = ({ timestamp }) => {
   const {
     reset,
     register,
@@ -23,7 +23,16 @@ const NewComment = () => {
     );
   };
   const onSubmit = ({ comment, user }) => {
-    console.log(comment, user);
+    const json = {
+      time_stamp: Math.floor(timestamp),
+      comment,
+      user,
+      song_id: 1,
+      user_pfp:
+        'https://www.onemanagement.com/assets/2019-01-17/61276crystaltillmanportfolioPage12Image0001.jpg',
+    };
+
+    axios.post('http://localhost:5000/comments', json);
     handleReset();
   };
 

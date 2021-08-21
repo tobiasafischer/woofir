@@ -28,7 +28,7 @@ comment_post_args.add_argument("comment", type=str, help="Comment body required"
 comment_post_args.add_argument("user", type=str, help="Username is required", required=(True))
 comment_post_args.add_argument("song_id", type=int, help="Song id is required", required=(True))
 comment_post_args.add_argument("time_stamp", type=int, help="time stamp is required", required=(True))
-comment_post_args.add_argument("user-pfp", type=str, help="user profile pic is required", required=(True))
+comment_post_args.add_argument("user_pfp", type=str, help="user profile pic is required", required=(True))
 
 
 comment_get_args = reqparse.RequestParser()
@@ -41,7 +41,7 @@ resource_fields = {
   'song_id': fields.Integer,
   'time_stamp': fields.Integer,
   'user': fields.String,
-  'user-pfp': fields.String
+  'user_pfp': fields.String
 }
 
 
@@ -56,7 +56,7 @@ class CommentList(Resource):
   @marshal_with(resource_fields)
   def post(self):
     args = comment_post_args.parse_args()
-    comments = Commentmodel(song_id=args["song_id"], comment=args["comment"], user=args["user"], time_stamp=args["time_stamp"], user_pfp=args["user-pfp"]).save()
+    comments = Commentmodel(song_id=args["song_id"], comment=args["comment"], user=args["user"], time_stamp=args["time_stamp"], user_pfp=args["user_pfp"]).save()
     return comments, 201
 
 api.add_resource(CommentList, '/comments')
