@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import './newcomment.scss';
 
-const NewComment = ({ timestamp, duration }) => {
+const NewComment = ({ timestamp, duration, setComments }) => {
   const {
     reset,
     register,
@@ -30,6 +30,9 @@ const NewComment = ({ timestamp, duration }) => {
     'https://thefader-res.cloudinary.com/private_images/w_640,c_limit,f_auto,q_auto:eco/160906_Noname_5552_nigbyu/noname-telefone-interview.jpg',
     'https://thefader-res.cloudinary.com/private_images/w_760,c_limit,f_auto,q_auto:best/Harrison_Corwin_lje6kl/jpegmafia-veteran-interview.jpg',
     'https://media.resources.festicket.com/www/artists/kali-uchis.jpg',
+    'https://thefader-res.cloudinary.com/private_images/w_760,c_limit,f_auto,q_auto:best/L1092574_xbtrjs/jpegmafia-photo-via-publicist.jpg',
+    'https://i.pinimg.com/originals/6a/a0/8d/6aa08d811c5dde14a2d95d474c377828.jpg',
+    'https://pbs.twimg.com/media/ESd50aWUMAAKFsg.jpg',
   ];
 
   const onSubmit = ({ comment, user }) => {
@@ -41,7 +44,11 @@ const NewComment = ({ timestamp, duration }) => {
       user_pfp: pfp[Math.floor(Math.random() * pfp.length)],
     };
 
-    axios.post('http://localhost:5000/comments', json);
+    axios.post('http://localhost:5000/comments', json).then(() => {
+      json['_id'] = JSON.stringify(json);
+      console.log(json);
+      setComments((comments) => [...comments, json]);
+    });
     handleReset();
   };
 

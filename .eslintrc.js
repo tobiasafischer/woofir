@@ -24,6 +24,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'no-underscore-dangle': 'off',
     'object-curly-newline': 'off',
+    'dot-notation': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

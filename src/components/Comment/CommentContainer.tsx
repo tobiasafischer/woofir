@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import './comment.scss';
 import Comment from './Comment';
 
-const CommentContainer = () => {
-  const [comments, setComments] = useState(null);
+const CommentContainer = ({ comments }) => {
   const [tiles, setTiles] = useState(null);
 
   useEffect(() => {
+    console.log(comments);
     if (comments) {
       const arr = [];
       const sort = comments.sort((a, b) => (a.time_stamp > b.time_stamp ? 1 : -1));
@@ -30,21 +29,7 @@ const CommentContainer = () => {
     }
   }, [comments]);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:5000/comments', {
-        params: {
-          song_id: 1,
-        },
-      })
-      .then((res) => {
-        setComments(res.data.comments);
-      });
-  }, []);
-
   return <div className="comment-container">{tiles}</div>;
 };
 
 export default CommentContainer;
-
-// transform: translateX((timestamp / songlength) * 100)
