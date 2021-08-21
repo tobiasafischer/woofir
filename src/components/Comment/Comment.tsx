@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './comment.scss';
 
 const Comment = ({ offset, user, comment, userPFP }) => {
   const [style, setStyle] = useState({ display: 'none', marginRight: '' });
   const handleEnter = () => {
     if (offset < 75) setStyle({ display: '', marginRight: '' });
-    else setStyle({ display: '', marginRight: '' });
+    else setStyle({ display: '', marginRight: '6vw' });
   };
-  console.log(offset);
+  useEffect(() => {
+    console.log(offset);
+  }, []);
   return (
     <div
-      style={{ transform: `translateX(${0.68 * offset}vw)` }}
+      style={{ transform: `translateX(${0.7 * offset}vw)` }}
       className="comment-indiv-contain"
       onMouseEnter={(e) => {
         handleEnter();

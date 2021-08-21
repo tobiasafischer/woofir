@@ -12,13 +12,14 @@ const CommentContainer = ({ duration }) => {
       console.log(comments);
       const arr = [];
       comments.forEach((comment) => {
+        const offset = (comment.time_stamp / duration) * 100;
         arr.push(
           <Comment
             key={comment._id.$oid}
             user={comment.user}
             userPFP={comment.user_pfp}
             comment={comment.comment}
-            offset={(comment.time_stamp / duration) * 100}
+            offset={offset}
           />,
         );
       });
