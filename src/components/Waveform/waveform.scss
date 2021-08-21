@@ -25,3 +25,17 @@ p {
     overflow: hidden;
   }
 }
+
+.comment-wrapper-container {
+  display: flex;
+  div {
+    margin-left: 5vw;
+  }
+  svg {
+    position: absolute;
+    font-size: 45px;
+    margin-bottom: 2vh;
+    color: #c25299;
+    margin-right: 10vw;
+  }
+}

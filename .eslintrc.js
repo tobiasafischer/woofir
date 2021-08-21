@@ -22,6 +22,8 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     'linebreak-style': 0,
     'react/jsx-props-no-spreading': 'off',
+    'no-underscore-dangle': 'off',
+    'object-curly-newline': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',

@@ -5,7 +5,8 @@
   height: 5vh;
   width: 69.969vw;
   margin-left: 3.9vw;
-  border: 1px solid red;
+  border-bottom: 2px solid white;
+  border-top: 2px solid white;
 }
 
 .comment-indiv-contain {
@@ -16,14 +17,18 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: green;
+  background-color: transparent;
+  max-width: 40px;
+  min-width: 30px;
   .comment-img {
     overflow: hidden;
     max-width: 40px;
     height: 100px;
+
     transition: all 0.5s ease-in-out;
     img {
       max-width: 40px;
+      min-width: 30px;
       height: auto;
     }
   }

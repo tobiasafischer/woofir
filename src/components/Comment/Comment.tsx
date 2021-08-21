@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './comment.scss';
 
-const Comment = ({ offset }) => {
+const Comment = ({ offset, user, comment, userPFP }) => {
   const [style, setStyle] = useState({ display: 'none', marginRight: '' });
   const handleEnter = () => {
     if (offset < 75) setStyle({ display: '', marginRight: '' });
-    else setStyle({ display: '', marginRight: '5vw' });
+    else setStyle({ display: '', marginRight: '' });
   };
-
+  console.log(offset);
   return (
     <div
       style={{ transform: `translateX(${0.68 * offset}vw)` }}
@@ -20,16 +20,12 @@ const Comment = ({ offset }) => {
       }}
     >
       <div className="comment-img">
-        <img
-          alt="pfp"
-          className="comment-pfp"
-          src="https://images.unsplash.com/photo-1618641986557-1ecd230959aa?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aW5zdGFncmFtJTIwcHJvZmlsZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-        />
+        <img alt="pfp" className="comment-pfp" src={userPFP} />
       </div>
 
       <div style={style} className="comment-txt-container">
-        <p id="username">@tobias</p>
-        <p id="content">yesgasergseadrgsaergasegasegawsegsaegsaesegsego</p>
+        <p id="username">{user}</p>
+        <p id="content">{comment}</p>
       </div>
     </div>
   );

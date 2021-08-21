@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import WaveSurfer from 'wavesurfer.js';
+import AddIcon from '@material-ui/icons/Add';
 import CommentContainer from '../Comment/CommentContainer';
 import PlayButton from '../misc/PlayButton';
 import { useInterval } from './useInterval';
@@ -81,8 +82,10 @@ const Waveform = () => {
       <p style={{ marginTop: '-1.8vh', width: '20vh' }}>{`${secTommss2(sec)} / ${secTommss2(
         Math.round(duration),
       )}`}</p>
-
-      <CommentContainer duration={duration} />
+      <div className="comment-wrapper-container">
+        <AddIcon />
+        <CommentContainer duration={duration} />
+      </div>
     </div>
   );
 };
