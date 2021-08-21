@@ -1,7 +1,6 @@
 .comment-container {
+  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
   height: 5vh;
   width: 69.969vw;
   margin-left: 3.9vw;
@@ -9,6 +8,7 @@
 }
 
 .comment-indiv-contain {
+  position: absolute;
   width: 40px;
   height: 45px;
   display: flex;

@@ -3,16 +3,19 @@ import axios from 'axios';
 import './comment.scss';
 import Comment from './Comment';
 
-const CommentContainer = ({ duration }) => {
+const CommentContainer = (props: { duration: number }) => {
+  const { duration } = props;
   const [comments, setComments] = useState(null);
   const [tiles, setTiles] = useState(null);
 
   useEffect(() => {
     if (comments) {
-      console.log(comments);
       const arr = [];
-      comments.forEach((comment) => {
+      const sort = comments.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
+      let counter = 0;
+      sort.forEach((comment) => {
         const offset = (comment.time_stamp / duration) * 100;
+        console.log(comment.time_stamp, duration);
         arr.push(
           <Comment
             key={comment._id.$oid}
@@ -20,8 +23,10 @@ const CommentContainer = ({ duration }) => {
             userPFP={comment.user_pfp}
             comment={comment.comment}
             offset={offset}
+            z={counter}
           />,
         );
+        counter += 1;
       });
       setTiles(arr);
     }

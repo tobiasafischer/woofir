@@ -1,30 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import './comment.scss';
 
-const Comment = ({ offset, user, comment, userPFP }) => {
-  const [style, setStyle] = useState({ display: 'none', marginRight: '' });
+const Comment = ({ offset, user, comment, userPFP, z }) => {
+  const [style, setStyle] = useState({ display: 'none', marginRight: '', zIndex: z });
   const handleEnter = () => {
-    if (offset < 75) setStyle({ display: '', marginRight: '' });
-    else setStyle({ display: '', marginRight: '6vw' });
+    if (offset < 75) setStyle({ display: '', marginRight: '', zIndex: z });
+    else setStyle({ display: '', marginRight: '6vw', zIndex: z });
   };
   useEffect(() => {
-    console.log(offset);
+    if (offset) console.log(`right: ${0.7 * offset}%`);
   }, []);
   return (
     <div
-      style={{ transform: `translateX(${0.7 * offset}vw)` }}
+      style={{ right: `${0.7 * offset}%` }}
       className="comment-indiv-contain"
       onMouseEnter={(e) => {
         handleEnter();
       }}
       onMouseLeave={(e) => {
-        setStyle({ display: 'none', marginRight: '' });
+        setStyle({ display: 'none', marginRight: '', zIndex: z });
       }}
     >
-      <div className="comment-img">
+      <div className="comment-img" style={{ zIndex: z }}>
         <img alt="pfp" className="comment-pfp" src={userPFP} />
       </div>
-
       <div style={style} className="comment-txt-container">
         <p id="username">{user}</p>
         <p id="content">{comment}</p>
