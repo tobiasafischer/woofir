@@ -1,9 +1,10 @@
 from flask import Flask, jsonify
 from flask_restful import Resource, Api, abort, reqparse, fields, marshal_with
 from flask_mongoengine import MongoEngine
-
+from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 api = Api(app)
+cors = CORS(app, resources={r"/comments": {"origins": "*"}})
 
 app.config['MONGODB_SETTINGS'] = {
   "db": "commentmodel",
@@ -43,9 +44,7 @@ resource_fields = {
 class CommentList(Resource):
   def get(self):
     args = comment_get_args.parse_args()
-    print(args)
-    comments = Commentmodel.objects()#song_id=args["song_id"])
-    print({"comments": comments})
+    comments = Commentmodel.objects(song_id=args["song_id"])
     if not comments:
       abort(404, message="Could not find comments with that song id")
     return jsonify({"comments": comments})
@@ -55,7 +54,7 @@ class CommentList(Resource):
     args = comment_post_args.parse_args()
     comments = Commentmodel(song_id=args["song_id"], comment=args["comment"], user=args["user"], time_stamp=args["time_stamp"]).save()
     return comments, 201
-  
+
 api.add_resource(CommentList, '/comments')
 
 if __name__ == "__main__":

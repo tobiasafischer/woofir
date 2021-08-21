@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './comment.scss';
 
 const Comment = ({ offset }) => {
-  const [style, setStyle] = useState({ display: 'none' });
+  const [style, setStyle] = useState({ display: 'none', marginRight: '' });
   const handleEnter = () => {
-    if (offset < 75) setStyle({ display: '' });
+    if (offset < 75) setStyle({ display: '', marginRight: '' });
     else setStyle({ display: '', marginRight: '5vw' });
   };
 
@@ -16,7 +16,7 @@ const Comment = ({ offset }) => {
         handleEnter();
       }}
       onMouseLeave={(e) => {
-        setStyle({ display: 'none' });
+        setStyle({ display: 'none', marginRight: '' });
       }}
     >
       <div className="comment-img">
