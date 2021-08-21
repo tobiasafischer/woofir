@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import './newcomment.scss';
 
-const NewComment = ({ timestamp }) => {
+const NewComment = ({ timestamp, duration }) => {
   const {
     reset,
     register,
@@ -31,7 +31,6 @@ const NewComment = ({ timestamp }) => {
     'https://upload.wikimedia.org/wikipedia/commons/a/a1/Brent_Faiyaz.jpg',
     'https://thefader-res.cloudinary.com/private_images/w_640,c_limit,f_auto,q_auto:eco/160906_Noname_5552_nigbyu/noname-telefone-interview.jpg',
     'https://pbs.twimg.com/profile_images/1349275365118599168/HlJOXaqc.jpg',
-    'https://static.wikia.nocookie.net/epicsmp/images/8/89/RyanMagee.jpg/revision/latest?cb=20210117131306',
     'https://pbs.twimg.com/profile_images/1247656404179021824/5f2tKg_h_400x400.jpg',
     'https://thefader-res.cloudinary.com/private_images/w_760,c_limit,f_auto,q_auto:best/Harrison_Corwin_lje6kl/jpegmafia-veteran-interview.jpg',
     'https://media.resources.festicket.com/www/artists/kali-uchis.jpg',
@@ -39,7 +38,7 @@ const NewComment = ({ timestamp }) => {
 
   const onSubmit = ({ comment, user }) => {
     const json = {
-      time_stamp: Math.floor(timestamp),
+      time_stamp: Math.floor((timestamp / (duration || 0)) * 100),
       comment,
       user,
       song_id: 1,

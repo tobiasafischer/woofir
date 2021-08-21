@@ -7,12 +7,9 @@ const Comment = ({ offset, user, comment, userPFP, z }) => {
     if (offset < 75) setStyle({ display: '', marginRight: '', zIndex: z });
     else setStyle({ display: '', marginRight: '6vw', zIndex: z });
   };
-  useEffect(() => {
-    if (offset) console.log(`right: ${0.7 * offset}%`);
-  }, []);
   return (
     <div
-      style={{ right: `${0.7 * offset}%` }}
+      style={{ left: `${offset}%` }}
       className="comment-indiv-contain"
       onMouseEnter={(e) => {
         handleEnter();

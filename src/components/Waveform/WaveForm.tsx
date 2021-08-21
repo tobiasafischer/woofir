@@ -32,7 +32,6 @@ const Waveform = () => {
   const [url, setUrl] = useState(
     'https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3',
   );
-  const [populate, setPopulate] = useState([]);
 
   // second timer
   useInterval(() => {
@@ -60,7 +59,7 @@ const Waveform = () => {
       }
     });
     return () => wavesurfer.current.destroy();
-  }, []);
+  }, [url]);
 
   const handlePlayPause = () => {
     setPlay(!playing);
@@ -71,24 +70,6 @@ const Waveform = () => {
     return new Date(sec * 1000).toUTCString().split(' ')[4].substr(3);
   };
 
-  useEffect(() => {
-    if (duration !== null) {
-      const arr = [
-        <>
-          <p style={{ marginTop: '-1.8vh', width: '20vh' }}>{`${secTommss2(sec)} / ${secTommss2(
-            Math.round(duration),
-          )}`}</p>
-          <div className="comment-wrapper-container">
-            <CommentContainer duration={duration} />
-          </div>
-          <NewComment timestamp={sec} />
-        </>,
-        ,
-      ];
-      setPopulate(arr);
-    }
-  }, [duration]);
-
   return (
     <div style={{ width: '100%' }}>
       <div className="audio-container">
@@ -98,7 +79,13 @@ const Waveform = () => {
         </div>
         <audio id="track" src={url} />
       </div>
-      {populate}
+      <p style={{ marginTop: '-1.8vh', width: '20vh' }}>{`${secTommss2(sec)} / ${secTommss2(
+        Math.round(duration),
+      )}`}</p>
+      <div className="comment-wrapper-container">
+        <CommentContainer />
+      </div>
+      <NewComment timestamp={Math.floor(sec)} duration={Math.floor(duration)} />
     </div>
   );
 };
