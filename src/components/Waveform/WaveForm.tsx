@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import WaveSurfer from 'wavesurfer.js';
+import axios from 'axios';
 import CommentContainer from '../Comment/CommentContainer';
 import PlayButton from '../misc/PlayButton';
 import { useInterval } from './useInterval';
+import NewComment from '../misc/NewComment';
 import './waveform.scss';
 
 //styling of waveform
@@ -31,6 +33,19 @@ const Waveform = () => {
   const [url, setUrl] = useState(
     'https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3',
   );
+  const [comments, setComments] = useState(null);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/comments', {
+        params: {
+          song_id: 1,
+        },
+      })
+      .then((res) => {
+        setComments(res.data.comments);
+      });
+  }, []);
 
   // second timer
   useInterval(() => {
@@ -81,8 +96,14 @@ const Waveform = () => {
       <p style={{ marginTop: '-1.8vh', width: '20vh' }}>{`${secTommss2(sec)} / ${secTommss2(
         Math.round(duration),
       )}`}</p>
-
-      <CommentContainer duration={duration} />
+      <div className="comment-wrapper-container">
+        <CommentContainer comments={comments} />
+      </div>
+      <NewComment
+        timestamp={Math.floor(sec)}
+        duration={Math.floor(duration)}
+        setComments={setComments}
+      />
     </div>
   );
 };
