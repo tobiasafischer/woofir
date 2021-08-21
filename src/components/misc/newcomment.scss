@@ -10,15 +10,16 @@
 
 .app-form-control {
   width: 100%;
-  padding: 10px 0;
+  padding: 7px 0;
   background: none;
   border: none;
   border-bottom: 1px solid #888;
   color: #eb736c;
   font-size: 14px;
-  text-transform: uppercase;
   outline: none;
   transition: border-color 0.2s;
+  font-family: 'Overpass', sans-serif;
+  text-transform: lowercase;
 }
 
 .app-form-control::placeholder {
@@ -36,6 +37,8 @@
   font-size: 14px;
   cursor: pointer;
   outline: none;
+  font-family: 'Overpass', sans-serif;
+  text-transform: lowercase;
 }
 
 .app-form-button:hover {
@@ -50,9 +53,9 @@ input:-webkit-autofill:active {
 }
 
 input:-webkit-autofill::first-line {
+  font-family: 'Overpass', sans-serif;
   color: #eb736c;
   font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 700;
+  text-transform: lowercase;
   transition: background-color 5000s ease-in-out 0s;
 }

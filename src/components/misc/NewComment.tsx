@@ -37,7 +37,7 @@ const NewComment = ({ timestamp }) => {
   };
 
   return (
-    <div style={{ width: '70vw', marginLeft: '5vw' }}>
+    <div style={{ width: '70vw', marginLeft: '5vw', marginTop: '2vh' }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="app-form-group">
           <input
