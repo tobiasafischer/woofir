@@ -13,7 +13,7 @@ const CommentContainer = () => {
       const sort = comments.sort((a, b) => (a.time_stamp > b.time_stamp ? 1 : -1));
       let counter = 0;
       sort.forEach((comment) => {
-        const offset = Math.round(comment.time_stamp - 7);
+        const offset = Math.round(comment.time_stamp - 5);
         arr.push(
           <Comment
             key={comment._id.$oid}

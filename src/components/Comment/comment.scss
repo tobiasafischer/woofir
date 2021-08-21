@@ -3,7 +3,7 @@
   display: flex;
   justify-content: flex-start;
   height: 5vh;
-  width: 90.969vw;
+  width: 70.969vw;
   margin-left: 3.9vw;
   border-bottom: 1px solid #888;
 }
@@ -33,6 +33,7 @@
     }
   }
   .comment-txt-container {
+    margin-right: 5vw;
     position: absolute;
     margin-top: 10vh;
     width: 30vw;
