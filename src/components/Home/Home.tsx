@@ -3,7 +3,6 @@ import './Home.scss';
 import WaveForm from '../Waveform/WaveForm';
 
 const Home = () => {
-  console.log(1);
   return (
     <div className="home">
       <svg

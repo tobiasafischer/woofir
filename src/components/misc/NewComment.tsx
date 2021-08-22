@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import './newcomment.scss';
 
-const NewComment = ({ timestamp, duration, setComments }) => {
+const NewComment = ({ url, setUrl, timestamp, duration, setComments }) => {
+  const [song, setSong] = useState(
+    'https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3',
+  );
+
   const {
     reset,
     register,
@@ -35,18 +39,32 @@ const NewComment = ({ timestamp, duration, setComments }) => {
     'https://pbs.twimg.com/media/ESd50aWUMAAKFsg.jpg',
   ];
 
+  const handleNewSong = (e) => {
+    e.preventDefault();
+    const songs = [
+      'https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3',
+      'https://www.mfiles.co.uk/mp3-downloads/mozart-symphony41-3.mp3',
+      'https://www.mfiles.co.uk/mp3-downloads/por-una-cabeza.mp3',
+    ];
+    let currSong = song;
+    while (currSong === url) {
+      currSong = songs[Math.floor(Math.random() * songs.length)];
+    }
+    setSong(currSong);
+    setUrl(currSong);
+  };
+
   const onSubmit = ({ comment, user }) => {
     const json = {
       time_stamp: Math.floor((timestamp / (duration || 0)) * 100),
       comment,
       user,
-      song_id: 1,
+      song_id: song,
       user_pfp: pfp[Math.floor(Math.random() * pfp.length)],
     };
 
     axios.post('http://localhost:5000/comments', json).then(() => {
       json['_id'] = JSON.stringify(json);
-      console.log(json);
       setComments((comments) => [...comments, json]);
     });
     handleReset();
@@ -73,6 +91,9 @@ const NewComment = ({ timestamp, duration, setComments }) => {
         </div>
 
         <div className="app-form-group buttons" style={{ marginTop: '4vh' }}>
+          <button className="app-form-button" type="button" onClick={handleNewSong}>
+            new song
+          </button>
           <button className="app-form-button" type="submit">
             SEND
           </button>

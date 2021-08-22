@@ -15,8 +15,8 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'no-unused-vars': 'warn',
-    'arrow-body-style': 'warn',
-    'react/prop-types': [1],
+    'arrow-body-style': 'off',
+    'react/prop-types': 'off',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],

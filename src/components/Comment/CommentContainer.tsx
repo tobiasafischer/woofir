@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './comment.scss';
 import Comment from './Comment';
 
-const CommentContainer = ({ comments }) => {
+const CommentContainer = ({ comments, song }) => {
   const [tiles, setTiles] = useState(null);
 
   useEffect(() => {
-    console.log(comments);
     if (comments) {
       const arr = [];
       const sort = comments.sort((a, b) => (a.time_stamp > b.time_stamp ? 1 : -1));
@@ -15,7 +14,7 @@ const CommentContainer = ({ comments }) => {
         const offset = Math.round(comment.time_stamp - 5);
         arr.push(
           <Comment
-            key={comment._id.$oid}
+            key={`${comment._id.$oid}${song}`}
             user={comment.user}
             userPFP={comment.user_pfp}
             comment={comment.comment}
