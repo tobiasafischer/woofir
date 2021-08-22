@@ -20,25 +20,25 @@ class Commentmodel(db.Document):
   comment = db.StringField(required=True)
   user = db.StringField(required=True)
   time_stamp = db.IntField(required=True)
-  song_id = db.IntField(required=True)
+  song_id = db.StringField(required=True)
   user_pfp = db.StringField(required=True)
 
 comment_post_args = reqparse.RequestParser()
 comment_post_args.add_argument("comment", type=str, help="Comment body required", required=(True))
 comment_post_args.add_argument("user", type=str, help="Username is required", required=(True))
-comment_post_args.add_argument("song_id", type=int, help="Song id is required", required=(True))
+comment_post_args.add_argument("song_id", type=str, help="Song id is required", required=(True))
 comment_post_args.add_argument("time_stamp", type=int, help="time stamp is required", required=(True))
 comment_post_args.add_argument("user_pfp", type=str, help="user profile pic is required", required=(True))
 
 
 comment_get_args = reqparse.RequestParser()
-comment_get_args.add_argument("song_id", type=int, help="Song id is required", required=(True))
+comment_get_args.add_argument("song_id", type=str, help="Song id is required", required=(True))
 
 
 resource_fields = {
   '_id': fields.Integer,
   'comment': fields.String,
-  'song_id': fields.Integer,
+  'song_id': fields.String,
   'time_stamp': fields.Integer,
   'user': fields.String,
   'user_pfp': fields.String

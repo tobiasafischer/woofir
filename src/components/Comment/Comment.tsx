@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './comment.scss';
 
 const Comment = ({ offset, user, comment, userPFP, z }) => {
@@ -11,10 +11,10 @@ const Comment = ({ offset, user, comment, userPFP, z }) => {
     <div
       style={{ left: `${offset > 75 ? offset - 5 : offset}%` }}
       className="comment-indiv-contain"
-      onMouseEnter={(e) => {
+      onMouseEnter={() => {
         handleEnter();
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={() => {
         setStyle({ display: 'none', zIndex: z });
       }}
     >
@@ -30,5 +30,3 @@ const Comment = ({ offset, user, comment, userPFP, z }) => {
 };
 
 export default Comment;
-
-// transform: translateX((timestamp / songlength) * 100)

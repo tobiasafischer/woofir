@@ -33,19 +33,20 @@ const Waveform = () => {
   const [url, setUrl] = useState(
     'https://www.mfiles.co.uk/mp3-downloads/franz-schubert-standchen-serenade.mp3',
   );
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     axios
       .get('http://localhost:5000/comments', {
         params: {
-          song_id: 1,
+          song_id: url,
         },
       })
       .then((res) => {
         setComments(res.data.comments);
-      });
-  }, []);
+      })
+      .catch(() => setComments([]));
+  }, [url]);
 
   // second timer
   useInterval(() => {
@@ -93,16 +94,20 @@ const Waveform = () => {
         </div>
         <audio id="track" src={url} />
       </div>
-      <p style={{ marginTop: '-1.8vh', width: '20vh' }}>{`${secTommss2(sec)} / ${secTommss2(
-        Math.round(duration),
-      )}`}</p>
+      <div className="under-wave-container">
+        <p style={{ marginTop: '-1.8vh', width: '20vh' }}>{`${secTommss2(sec)} / ${secTommss2(
+          Math.round(duration),
+        )}`}</p>
+      </div>
       <div className="comment-wrapper-container">
-        <CommentContainer comments={comments} />
+        <CommentContainer comments={comments} song={url} />
       </div>
       <NewComment
+        url={url}
         timestamp={Math.floor(sec)}
         duration={Math.floor(duration)}
         setComments={setComments}
+        setUrl={setUrl}
       />
     </div>
   );
