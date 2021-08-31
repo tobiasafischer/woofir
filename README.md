@@ -1,26 +1,12 @@
 ![demo](woofir.gif)
 
-<h1>Commands</h1>
-<ul>
-  <li>yarn start //starts the client side</li>
-  <li>yarn run server //starts python backend</li>
-</ul>
 
-
-
-<h1>Python Dependencies</h1>
-<ul>
-  <li>flask</li>
-  <li>flask_restful</li>
-  <li>flask_mongoengine</li>
-  <li>flask_cors</li>
-</ul>
 
 <h1>How to run</h1>
 
   
   
-<h3>Windows</h3>
+<h3>Windows:</h3>
   <ul>
     <li>git clone https://github.com/tobiasafischer/woofir.git</li>
     <li>cd woofir</li>
@@ -33,7 +19,7 @@
     <li>yarn start</li>
   </ul>
   
-<h3>Linux</h3>
+<h3>Linux:</h3>
   <ul>
     <li>git clone https://github.com/tobiasafischer/woofir.git</li>
     <li>cd woofir</li>
@@ -48,7 +34,7 @@
   </ul>
   
   
-<h3>MacOS</h3>
+<h3>MacOS:</h3>
   <ul>
     <li>git clone https://github.com/tobiasafischer/woofir.git</li>
     <li>cd woofir</li>
@@ -73,3 +59,8 @@
   <li>To change the song press the 'new song' button at the bottom</li>
 </ul>
 
+<h1>Commands</h1>
+<ul>
+  <li>yarn start //starts the client side</li>
+  <li>yarn run server //starts python backend</li>
+</ul>
