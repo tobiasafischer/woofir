@@ -1,7 +1,10 @@
 <h1>Commands</h1>
+<ul>
+  <li>yarn start //starts the client side</li>
+  <li>yarn run server //starts python backend</li>
+</ul>
 
-yarn start //starts the client side
-yarn run server //starts python backend
+
 
 <h1>Python Dependencies</h1>
 <ul>
