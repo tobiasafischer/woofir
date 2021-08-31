@@ -13,6 +13,7 @@
     <li>pip install pipenv (if not already installed)</li>
     <li>npm install --global yarn (if yarn is not installed)</li>
     <li>pipenv shell</li>
+    <li>pipenv install</li>
     <li>yarn</li>
     <li>yarn run server</li>
     <li>(open new terminal)</li>
@@ -27,6 +28,7 @@
     <li>sudo apt install pipenv</li>
     <li>sudo apt install yarn (if yarn is not installed)</li>
     <li>pipenv shell</li>
+     <li>pipenv install</li>
     <li>yarn</li>
     <li>yarn run server</li>
     <li>(open new terminal)</li>
@@ -42,6 +44,7 @@
     <li>brew install yarn</li>
     <li>brew install pipenv</li>
     <li>pipenv shell</li>
+     <li>pipenv install</li>
     <li>yarn</li>
     <li>yarn run server</li>
     <li>(open new terminal)</li>
