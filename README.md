@@ -1,31 +1,26 @@
-<h1>COMMANDS</h1>
+<h1>Commands</h1>
 
 yarn start //starts the client side
 yarn run server //starts python backend
 
-<h1>Python DEPENDENCIES</h1>
+<h1>Python Dependencies</h1>
 flask
 flask_restful
 flask_mongoengine
 flask_cors
 
 
-HOW TO RUN:
-
-WINDOWS:
-
-1. run command yarn
-2. configure your python virtual env (setup is woofir_env)
-VSCODE: view -> command pallete -> Python: select interpreter -> Python 3.8.10 64-bit ('woofir_env':venv)
-
-
-3. yarn run server
-4. (separate terminal) yarn start
+<h1>How to run</h1>
+1. git clone https://github.com/tobiasafischer/woofir.git
+2. cd woofir
+3. pip install pipenv (if not already installed)
+4. pipenv shell 
+5. yarn run server
+6. (open new terminal)
+7. yarn start
 
 
-MACOS:
-
-How to make everything work:
+<h1>How to make everything work</h1>
 
 to play the song press the colored '>' to the left of the wave form
 
