@@ -20,6 +20,7 @@
   <li>cd woofir</li>
   <li>pip install pipenv (if not already installed)</li>
   <li>pipenv shell</li>
+  <li>yarn</li>
   <li>yarn run server</li>
   <li>(open new terminal)</li>
   <li>yarn start</li>
