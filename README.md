@@ -17,31 +17,50 @@
 </ul>
 
 <h1>How to run</h1>
-<ul>
-  <li>git clone https://github.com/tobiasafischer/woofir.git</li>
-  <li>cd woofir</li>
+
   
-  <h3>Windows</h1>
+  
+<h3>Windows</h3>
+  <ul>
+    <li>git clone https://github.com/tobiasafischer/woofir.git</li>
+    <li>cd woofir</li>
     <li>pip install pipenv (if not already installed)</li>
     <li>npm install --global yarn (if yarn is not installed)</li>
+    <li>pipenv shell</li>
+    <li>yarn</li>
+    <li>yarn run server</li>
+    <li>(open new terminal)</li>
+    <li>yarn start</li>
+  </ul>
   
-  <h3>Linux</h1>
+<h3>Linux</h3>
+  <ul>
+    <li>git clone https://github.com/tobiasafischer/woofir.git</li>
+    <li>cd woofir</li>
     <li>sudo apt install python</li>
     <li>sudo apt install pipenv</li>
     <li>sudo apt install yarn (if yarn is not installed)</li>
+    <li>pipenv shell</li>
+    <li>yarn</li>
+    <li>yarn run server</li>
+    <li>(open new terminal)</li>
+    <li>yarn start</li>
+  </ul>
   
-  <h3>MacOS</h1>
   
-  <li>brew install python</li>
-  <li>brew install yarn</li>
-  <li>brew install pipenv</li>
-
-  <li>pipenv shell</li>
-  <li>yarn</li>
-  <li>yarn run server</li>
-  <li>(open new terminal)</li>
-  <li>yarn start</li>
-</ul>
+<h3>MacOS</h3>
+  <ul>
+    <li>git clone https://github.com/tobiasafischer/woofir.git</li>
+    <li>cd woofir</li>
+    <li>brew install python</li>
+    <li>brew install yarn</li>
+    <li>brew install pipenv</li>
+    <li>pipenv shell</li>
+    <li>yarn</li>
+    <li>yarn run server</li>
+    <li>(open new terminal)</li>
+    <li>yarn start</li>
+  </ul>
 
 
 <h1>How to make everything work</h1>
