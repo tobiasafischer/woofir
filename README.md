@@ -16,7 +16,7 @@
     <li>pipenv install</li>
     <li>yarn</li>
     <li>yarn run server</li>
-    <li>(open new terminal)</li>
+    <li>(open new terminal in ./woofir)</li>
     <li>yarn start</li>
   </ul>
   
@@ -31,7 +31,7 @@
      <li>pipenv install</li>
     <li>yarn</li>
     <li>yarn run server</li>
-    <li>(open new terminal)</li>
+    <li>(open new terminal in ./woofir)</li>
     <li>yarn start</li>
   </ul>
   
@@ -47,7 +47,7 @@
      <li>pipenv install</li>
     <li>yarn</li>
     <li>yarn run server</li>
-    <li>(open new terminal)</li>
+    <li>(open new terminal in ./woofir)</li>
     <li>yarn start</li>
   </ul>
 
