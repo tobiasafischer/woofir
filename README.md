@@ -3,7 +3,12 @@
 yarn start //starts the client side
 yarn run server //starts python backend
 
-<h1>DEPENDENCIES</h1>
+<h1>Python DEPENDENCIES</h1>
+flask
+flask_restful
+flask_mongoengine
+flask_cors
+
 
 HOW TO RUN:
 
