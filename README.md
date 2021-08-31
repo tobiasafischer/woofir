@@ -1,4 +1,3 @@
-<h1>Woofir</h1>
 ![demo](woofir.gif)
 
 <h1>Commands</h1>
