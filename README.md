@@ -1,17 +1,24 @@
-Commands:
+<h1>COMMANDS</h1>
 
 yarn start //starts the client side
 yarn run server //starts python backend
 
+<h1>DEPENDENCIES</h1>
+
 HOW TO RUN:
+
+WINDOWS:
 
 1. run command yarn
 2. configure your python virtual env (setup is woofir_env)
-
 VSCODE: view -> command pallete -> Python: select interpreter -> Python 3.8.10 64-bit ('woofir_env':venv)
+
 
 3. yarn run server
 4. (separate terminal) yarn start
+
+
+MACOS:
 
 How to make everything work:
 
